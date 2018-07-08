@@ -1,8 +1,8 @@
 #!/usr/bin/env python 
 
 # Super simple python script to convert a server inventory csv into a Ansible
-# inventory sorted by a specific column. Here, by the location of the server, 
-# although you could change that to whatever you want 
+# inventory sorted by a specific column. Just add your .csv to the project folder,
+# update the two variables listed below and you're in business!
 
 ''' import our required modules '''
 import csv 
@@ -10,11 +10,14 @@ import os
 import datetime
 import shutil 
 
-''' replace example.csv with your server inventory '''
-f = csv.reader(file('example.csv'))
+''' update this to your .ini '''
+your_ini = 'test.ini'
 
-''' This will allow us to skip the header row '''
-firstLine = True
+''' your server inventory spreadsheet '''
+your_csv = 'example.csv'
+
+''' replace example.csv with your server inventory '''
+f = csv.reader(file(your_csv))
 
 ''' set our variable that we will be sorting the csv out with '''
 old_location = ''
@@ -45,6 +48,7 @@ if( inventory_exists == True ):
             os.remove(backup)
 
 ''' iterate through each line, skipping the headers '''
+firstLine = True
 for row in f:
     if firstLine:
         firstLine = False
@@ -58,7 +62,7 @@ for row in f:
         location_header = '['+ new_location + ']'
 
         ''' swap test.ini with your Ansible inventory file '''
-        inventory = open('test.ini', 'a')
+        inventory = open(your_ini, 'a')
         inventory.write('\n' + location_header + '\n')
         ip = row[1]
         hostname = row[0]
@@ -66,7 +70,7 @@ for row in f:
 
     else:
         ''' otherwise, keep adding new servers to this location '''
-        inventory = open('test.ini', 'a')
+        inventory = open(your_ini, 'a')
         ip = row[1]
         hostname = row[0]
         inventory.write(ip + '  ansible_hostname='+hostname+'\n')
