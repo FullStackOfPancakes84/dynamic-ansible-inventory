@@ -1,0 +1,11 @@
+hostname,ip,address,model,location
+blah-blah30,192.168.0.1,1234 juniper ln,,9st-switches
+blah-blah31,192.168.0.2,1234 juniper ln,,9st-switches
+blah-blah32,192.168.0.3,1234 juniper ln,,9st-switches
+gui-gui-281,192.168.1.1,88 Lindros Rd,,cec-switches
+gui-gui-282,192.168.1.2,88 Lindros Rd,,cec-switches
+gui-gui-283,192.168.1.3,88 Lindros Rd,,cec-switches
+simpo-sam-18,192.168.2.1,14 Fleury Ave,,cav-switches
+simpo-sam-18,192.168.2.2,14 Fleury Ave,,cav-switches
+simpo-sam-18,192.168.2.3,14 Fleury Ave,,cav-switches
+foo-bar-123,192.168.0.33,88 Victoria St,,jtil-switch
