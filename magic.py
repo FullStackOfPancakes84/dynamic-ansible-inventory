@@ -1,8 +1,8 @@
 #!/usr/bin/env python 
 
 # Super simple python script to convert a server inventory csv into a Ansible
-# playbook sorted by a specific column. Here, by the location of the server, although
-# you could change that to whatever you want 
+# inventory sorted by a specific column. Here, by the location of the server, 
+# although you could change that to whatever you want 
 
 ''' import our required modules '''
 import csv 
@@ -23,20 +23,28 @@ old_location = ''
 inventory_exists = os.path.isfile('test.ini')
 if( inventory_exists == True ):
 
-    ''' If it does, lets timestamp it and copy/move it to our backups '''
-    timestamp = datetime.datetime.now()
-
     source = os.listdir('./')
+
+    ''' Create our backups folder if it doesn't exist '''
+    if not os.path.exists('./backups'):
+        os.makedirs('backups', mode=0755)
+
     destination = './backups/'
     for files in source:
+
+        ''' Do we already have an Ansible inventory in the folder? '''
         if files.endswith('.ini'):
+
+            ''' create our backup file and attach a timestamp '''
+            timestamp = datetime.datetime.now()
             backup = str(timestamp) + '--' + files
             os.rename(files, backup)
+
+            ''' copy it to our backups folder, then delete the temp '''
             shutil.copy(backup, destination)
             os.remove(backup)
 
-
-''' iterate through each line '''
+''' iterate through each line, skipping the headers '''
 for row in f:
     if firstLine:
         firstLine = False
