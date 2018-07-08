@@ -7,10 +7,10 @@ Dynamically generating an Ansible inventory file from a generic server inventory
 > * Freaked out about breaking something?
 > * Python nerd?
 
-This script is for you! 
+**This script is for you!**
 
 Depending on how you've structured your server inventory spreadsheet, you'll probably need to tweak this code a bit. It should serve
-as a great jump off point for you though! Or, y'know... you could always alter your spreadsheet to line up with the example.csv.
+as a great jump off point for you though! Or, y'know... you could always alter your spreadsheet to line up with the _example.csv_.
 
 Right now, the script assumes the following column structure in your server inventory CSV
 
