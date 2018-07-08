@@ -16,5 +16,11 @@ Right now, the script assumes the following column structure in your server inve
 
     hostname | ip | address | model | location 
 
+magic.py will sort through your csv and generate an .ini file based on the location column. 
+
+Each time you run the script:
+* It will look to see if the .ini file exists in the project directory. If not, it will create it.
+* If it finds an existing .ini, it will time-stamp it and copy it to the /backups folder, then create a new one with the updated information
+
 # Enjoy !
     
